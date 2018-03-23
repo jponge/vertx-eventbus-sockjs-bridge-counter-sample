@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Yo</title>
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vertx3-eventbus-client@3.5.1/vertx-eventbus.js"></script>
+</head>
+<body>
+  <p id="counter"></p>
+  <script>
+
+    var counter = 0;
+
+    var eb = new EventBus('/eventbus');
+    eb.onopen = function () {
+      console.log("Connected to the event bus");
+      eb.registerHandler("highway", function (err, msg) {
+        counter = counter + 1;
+        document.getElementById("counter").textContent = counter;
+      });
+    };
+
+  </script>
+</body>
+</html>

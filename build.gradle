@@ -1,0 +1,17 @@
+plugins {
+  id 'io.vertx.vertx-plugin' version '0.0.8'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation "io.vertx:vertx-core"
+  implementation "io.vertx:vertx-web"
+}
+
+vertx {
+  vertxVersion = '3.5.1'
+  mainVerticle = "sample.MainVerticle"
+}
